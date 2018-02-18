@@ -3,7 +3,6 @@
 	<name>teensy_project_runner</name>
 	<comment></comment>
 	<projects>
-		<project>teensy-project-library</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -38,9 +37,14 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>teensy-project-library</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/teensy-project-library</locationURI>
+		</link>
+		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/sam/1.6.11/cores/arduino</locationURI>
+			<location>/home/xinniw/arduino-1.8.5/hardware/teensy/avr/cores/teensy3</location>
 		</link>
 		<link>
 			<name>core/variant</name>

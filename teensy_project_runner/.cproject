@@ -20,7 +20,8 @@
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.280655687" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option id="io.sloeber.compiler.cpp.sketch.option.incpath.1422369394" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy-project-library/include}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1451570780" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
@@ -28,14 +29,17 @@
 							<tool id="io.sloeber.tool.compiler.c.1578971702" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option id="io.sloeber.compiler.c.sketch.option.incpath.1320125777" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy-project-library/include}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.557753499" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.1930301038" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option id="io.sloeber.compiler.asm.sketch.option.incpath.1064839825" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy-project-library/include}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1589591145" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
@@ -46,20 +50,23 @@
 							<tool id="io.sloeber.tool.size.1943309683" name="Arduino tool Print Size" superClass="io.sloeber.tool.size"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="it.baeyens.arduino.core.toolChain.release.504661961.2075287476" name="teensy_project_runner.ino" rcbsApplicability="disable" resourcePath="teensy_project_runner.ino" toolsToInvoke="io.sloeber.tool.sketch.compiler.cpp.280655687.1688417802">
+						<tool id="io.sloeber.tool.sketch.compiler.cpp.280655687.1688417802" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.280655687">
+							<option id="io.sloeber.compiler.cpp.sketch.option.incpath.892506104" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/core/core}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy_project_runner/teensy-project-library/src}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/teensy-project-library/include}&quot;"/>
+							</option>
+							<inputType id="io.sloeber.compiler.cpp.sketch.input.1522400592" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
 						<entry excluding="libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries**/._*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="teensy-project-library;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
-					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/due-custom-sketch"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/due-custom-sketch/Debug"/>
-						<entry flags="RESOLVED" kind="libraryFile" name="due-custom-sketch" srcPrefixMapping="" srcRootPath=""/>
-					</externalSetting>
-				</externalSettings>
-			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -70,9 +77,7 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/due_project_runner"/>
-		</configuration>
+		<configuration configurationName="Release"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>

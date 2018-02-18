@@ -1,2 +1,5 @@
 /core/
-/libraries/
+/makefile
+/objects.mk
+/sources.mk
+/teensy-project-library/
