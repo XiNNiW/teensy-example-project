@@ -9,10 +9,8 @@ RM := rm -f
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include libraries/src/subdir.mk
--include core/variant/subdir.mk
--include core/core/avr/subdir.mk
--include core/core/USB/subdir.mk
+-include teensy-project-library/src/subdir.mk
+-include teensy-project-library/Debug/src/subdir.mk
 -include core/core/subdir.mk
 -include objects.mk
 
@@ -53,7 +51,7 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 AR += \
-/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/arduino.ar \
+/home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/arduino.ar \
 
 ELF += \
 teensy_project_runner.elf \
@@ -65,32 +63,29 @@ teensy_project_runner.hex \
 # All Target
 all: teensy_project_runner
 
-dependents:
-	-cd /home/xinniw/Development/arduino/arduino-due-example-project/due-project-library/Debug && $(MAKE) all
-
 # Tool invocations
-teensy_project_runner: $(HEX) /home/xinniw/Development/arduino/arduino-due-example-project/due-project-library/Debug/libteensy-project-library.a
+teensy_project_runner: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"/home/xinniw/eclipse/cpp-oxygen/eclipse//arduinoPlugin/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-size" -A "/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/teensy_project_runner.elf"
+	"/home/xinniw/arduino-1.8.5/hardware/teensy/../tools/arm/bin/arm-none-eabi-size" -A "/home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/teensy_project_runner.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/arduino.ar: $(AR_OBJ)
+/home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"/home/xinniw/eclipse/cpp-oxygen/eclipse//arduinoPlugin/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-ar" rcs    /home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/arduino.ar $(AR_OBJ)
+	"/home/xinniw/arduino-1.8.5/hardware/teensy/../tools/arm/bin/arm-none-eabi-gcc-ar" rcs    /home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 teensy_project_runner.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"/home/xinniw/eclipse/cpp-oxygen/eclipse//arduinoPlugin/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-gcc" -mcpu=cortex-m3 -mthumb -Os -Wl,--gc-sections "-T/home/xinniw/eclipse/cpp-oxygen/eclipse//arduinoPlugin/packages/arduino/hardware/sam/1.6.11/variants/arduino_due_x/linker_scripts/gcc/flash.ld" "-Wl,-Map,/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/teensy_project_runner.map" -o "/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/teensy_project_runner.elf" "-L/home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--entry=Reset_Handler -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -Wl,--start-group -u _sbrk -u link -u _close -u _fstat -u _isatty -u _lseek -u _read -u _write -u _exit -u kill -u _getpid   $(LINK_OBJ)  "/home/xinniw/eclipse/cpp-oxygen/eclipse//arduinoPlugin/packages/arduino/hardware/sam/1.6.11/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a"  /home/xinniw/Development/arduino/arduino-due-example-project/due_project_runner/Release/arduino.ar  -Wl,--end-group -lm -gcc
+	"/home/xinniw/arduino-1.8.5/hardware/teensy/../tools/arm/bin/arm-none-eabi-gcc" -O1 -Wl,--gc-sections,--relax,--defsym=__rtc_localtime=1518900474 "-T/home/xinniw/arduino-1.8.5/hardware/teensy/avr/cores/teensy3/mk20dx256.ld" -lstdc++ -mthumb -mcpu=cortex-m4 -fsingle-precision-constant -o "/home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/teensy_project_runner.elf"   $(LINK_OBJ)   /home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release/arduino.ar  "-L/home/xinniw/Development/arduino/arduino-teensy-example-project/teensy_project_runner/Release" -larm_cortexM4l_math -lm
 	@echo 'Finished building: $@'
 	@echo ' '
 
 teensy_project_runner.hex: $(ELF)
 	@echo 'Create eeprom image'
-	${A.RECIPE.OBJCOPY.BIN.PATTERN}
+	${A.RECIPE.OBJCOPY.EEP.PATTERN}
 	${A.RECIPE.OBJCOPY.HEX.PATTERN}
 	@echo 'Finished building: $@'
 	@echo ' '
@@ -102,6 +97,5 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-/home/xinniw/Development/arduino/arduino-due-example-project/due-project-library/Debug/libteensy-project-library.a:
 
 -include ../makefile.targets

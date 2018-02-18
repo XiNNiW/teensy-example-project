@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "factorial.h"
 //The setup function is called once at startup of the sketch
 int counter;
@@ -13,7 +12,7 @@ void setup()
 void loop()
 {
 	Serial.print("the next factorial...");
-	Serial.println(factorial(counter));
+	Serial.println(String(factorial(counter)));
 	counter = (counter+1)%4;
 	delay(1000);
 //Add your repeated code here

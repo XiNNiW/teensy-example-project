@@ -35,9 +35,7 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 core/core \
-core/core/USB \
-core/core/avr \
-core/variant \
-libraries/src \
 . \
+teensy-project-library/Debug/src \
+teensy-project-library/src \
 
